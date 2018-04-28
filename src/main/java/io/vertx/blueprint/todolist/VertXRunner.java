@@ -1,5 +1,6 @@
 package io.vertx.blueprint.todolist;
 
+import io.vertx.blueprint.todolist.verticles.TodoBlockingVerticle;
 import io.vertx.blueprint.todolist.verticles.TodoVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
@@ -19,8 +20,9 @@ public class VertXRunner {
 //    VertxOptions vo = new VertxOptions();
 //    vo.setEventLoopPoolSize(16);
     final Vertx vertx = Vertx.vertx();
-    DeploymentOptions options = new DeploymentOptions().setWorker(false).setMultiThreaded(false).setInstances(4).setWorkerPoolSize(360).setWorkerPoolName("spring-service-work");
+    DeploymentOptions options = new DeploymentOptions().setWorker(false).setMultiThreaded(false).setInstances(8).setWorkerPoolSize(360).setWorkerPoolName("spring-service-work");
     vertx.deployVerticle(TodoVerticle.class.getName(),options);
+//    vertx.deployVerticle(TodoBlockingVerticle.class.getName());
     logger.info("Deployment done");
   }
 

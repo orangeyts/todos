@@ -7,3 +7,5 @@ build
 .vertx
 
 logs
+
+out
