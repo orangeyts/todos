@@ -20,10 +20,10 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.CorsHandler;
+import io.vertx.ext.web.handler.StaticHandler;
 import io.vertx.redis.RedisOptions;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -53,6 +53,7 @@ public class TodoVerticle extends AbstractVerticle {
       default:
         RedisOptions config = new RedisOptions()
           .setHost(config().getString("redis.host", "127.0.0.1"))
+          .setAuth(config().getString("redis.auth", "Didano2017"))
           .setPort(config().getInteger("redis.port", 6379));
         service = new RedisTodoService(vertx, config);
     }
@@ -83,6 +84,7 @@ public class TodoVerticle extends AbstractVerticle {
     allowMethods.add(HttpMethod.DELETE);
     allowMethods.add(HttpMethod.PATCH);
 
+    router.route("/webroot/*").handler(StaticHandler.create());
     router.route().handler(BodyHandler.create());
     router.route().handler(CorsHandler.create("*")
       .allowedHeaders(allowHeaders)

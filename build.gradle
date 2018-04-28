@@ -34,6 +34,10 @@ task annotationProcessing(type: JavaCompile, group: 'build') {
   ]
 }
 
+task run(){
+
+}
+
 sourceSets {
   main {
     java {
@@ -56,6 +60,8 @@ dependencies {
   compile("io.vertx:vertx-redis-client:${vertxVersion}")
   compileOnly("io.vertx:vertx-codegen:${vertxVersion}")
   compile 'mysql:mysql-connector-java:6.0.5'
+  compile 'org.slf4j:slf4j-api:1.7.25'
+  compile 'ch.qos.logback:logback-classic:1.1.11'
 
   testCompile("io.vertx:vertx-unit:${vertxVersion}")
   testCompile group: 'junit', name: 'junit', version: '4.12'
