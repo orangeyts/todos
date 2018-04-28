@@ -56,3 +56,8 @@ Test result of the RESTful API (using [todo-backend-js-spec](https://github.com/
 You can also run it with [the todo backend frontend client](http://www.todobackend.com/client/index.html):
 
 ![Todo Frontend](docs/img/vertx-todobackend-ui.png)
+
+
+## add UI to this project
+
+http://localhost:8082/index.html?http://localhost:8082/todos
